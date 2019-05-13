@@ -38,5 +38,6 @@ export class ClientesPageComponent implements OnInit {
 
   mostrarLista() {
     this.modo = ModoTela.Listar;
+    this.buscarClientes();
   }
 }

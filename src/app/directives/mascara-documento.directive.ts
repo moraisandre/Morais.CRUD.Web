@@ -44,9 +44,10 @@ export class MascaraDocumentoDirective implements ControlValueAccessor {
   onInput($event: any) {
     const valor = $event.target.value.replace(/\D/g, '');
 
-    switch (this.appMascaraDocumento) {
+    switch (this.appMascaraDocumento.toString()) {
       case 'PF':
-        this.mascara = '999.999.999-99';
+      case '1':
+      this.mascara = '999.999.999-99';
         switch ($event.target.selectionEnd) {
           case 3:
           case 7:
@@ -61,6 +62,7 @@ export class MascaraDocumentoDirective implements ControlValueAccessor {
         }
         break;
       case 'PJ':
+      case '2':
         this.mascara = '99.999.999/9999-99';
         switch ($event.target.selectionEnd) {
           case 2:
