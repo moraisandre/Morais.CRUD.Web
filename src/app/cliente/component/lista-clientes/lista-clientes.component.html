@@ -1,0 +1,35 @@
+<div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Clientes</h3>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Documento</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let cliente of clientes">
+        <tr>
+          <td>{{cliente.Documento}}</td>
+          <td>{{cliente.Nome}}</td>
+          <td>{{cliente.Endereco}}</td>
+          <td>{{cliente.Email}}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+<!--
+    Id: string;
+  Documento: string;
+  TipoPessoa: TipoPessoa;
+  Nome: string;
+  Endereco: string;
+  Email: string;
+ -->

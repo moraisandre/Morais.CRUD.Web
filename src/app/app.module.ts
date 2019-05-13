@@ -1,14 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { ListaClientesComponent } from './cliente/component/lista-clientes/lista-clientes.component';
 import { ClientesPageComponent } from './cliente/page/clientes-page/clientes-page.component';
-import { UrlInterceptor } from './interceptors/UrlInterceptor';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ClienteService } from './cliente/service/cliente.service';
+import { UrlInterceptor } from './interceptors/UrlInterceptor';
 
 @NgModule({
-  declarations: [AppComponent, ClientesPageComponent],
+  declarations: [AppComponent, ClientesPageComponent, ListaClientesComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [
     HttpClient,
