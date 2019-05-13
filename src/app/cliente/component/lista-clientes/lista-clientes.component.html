@@ -11,25 +11,26 @@
         <th>Nome</th>
         <th>Endereço</th>
         <th>Email</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <ng-container *ngFor="let cliente of clientes">
         <tr>
-          <td>{{cliente.Documento}}</td>
+          <td>{{cliente.Documento | documento}}</td>
           <td>{{cliente.Nome}}</td>
           <td>{{cliente.Endereco}}</td>
           <td>{{cliente.Email}}</td>
+          <td>
+            <a href="">
+              Editar
+            </a>
+            <a href="">
+              Excluir
+            </a>
+          </td>
         </tr>
       </ng-container>
     </tbody>
   </table>
 </div>
-<!--
-    Id: string;
-  Documento: string;
-  TipoPessoa: TipoPessoa;
-  Nome: string;
-  Endereco: string;
-  Email: string;
- -->

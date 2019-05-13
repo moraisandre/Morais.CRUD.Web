@@ -7,7 +7,7 @@ import { ClienteDTO } from '../../dto/cliente-dto';
   styleUrls: ['./lista-clientes.component.css']
 })
 export class ListaClientesComponent implements OnInit {
-  @Input() clientes: ClienteDTO;
+  @Input() clientes: ClienteDTO[];
 
   constructor() {}
 

@@ -14,8 +14,6 @@ export class ClientesPageComponent implements OnInit {
   constructor(private clienteService: ClienteService) {}
 
   ngOnInit() {
-    // this.cliente.Documento = '387.600.268-77';
-
     this.clienteService.obterClientes().subscribe(clientes => {
       this.clientes = clientes;
       console.log(clientes);
