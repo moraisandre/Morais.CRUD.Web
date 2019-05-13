@@ -5,7 +5,7 @@
   <h2>Alterar Cliente</h2>
 </ng-template>
 
-<div class="row" *ngIf="novoCliente else editarCliente">
+<div *ngIf="novoCliente else editarCliente">
   <div class="row">
     <div class="radios col-md-2">
       <label for="tipSacador" class="tit-box">Tipo de Pessoa</label>
@@ -84,15 +84,15 @@
 
 
 <div class="row row-buttons">
-  <div class="form-group col-md-3" *ngIf="novoCliente else botaoSalvar">
-    <button id="salvar-cliente-button" class="btnBuscar total" (click)="criar()">CRIAR</button>
+  <div class="col-md-3" *ngIf="novoCliente else botaoSalvar">
+    <button id="salvar-cliente-button" class="botao-padrao" (click)="criar()">CRIAR</button>
   </div>
   <ng-template #botaoSalvar>
-    <div class="form-group col-md-3">
-      <button id="salvar-cliente-button" class="btnBuscar total" (click)="salvar()">SALVAR</button>
+    <div class="col-md-3">
+      <button id="salvar-cliente-button" class="botao-padrao" (click)="salvar()">SALVAR</button>
     </div>
   </ng-template>
   <div class="col-md-2">
-    <button id="voltar-button" class="btn-voltar marginTopBtn" (click)="voltarLista()">VOLTAR</button>
+    <button id="voltar-button" class="botao-padrao" (click)="voltarLista()">VOLTAR</button>
   </div>
 </div>

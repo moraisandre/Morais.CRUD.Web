@@ -61,10 +61,31 @@ h3 {
 
 .box-radios label:hover, .box-radios label:focus {
   background: #f5f8fc;
-  border-bottom: 2px solid #53adcf;
+  border-bottom: 2px solid #34808c;
 }
 
 .radios {
   float: left;
   padding: 0 15px 0 15px;
+}
+
+
+.botao-padrao {
+  border-radius: 2px;
+  background-color: #34808c;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(143, 147, 173, 0.59);
+  box-shadow: 0 1px 1px 0 rgba(143, 147, 173, 0.59);
+  color: #FFF;
+  width: 70%;
+  height: 35px;
+  border: #34808c;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+.ico {
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+  width: 20px;
 }

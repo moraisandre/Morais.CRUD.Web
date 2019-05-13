@@ -22,9 +22,10 @@
           <td>{{cliente.Endereco}}</td>
           <td>{{cliente.Email}}</td>
           <td>
-            <button id="editar-button" (click)="editarCliente(cliente)">Editar</button>
-            <button id="excluir-button" (click)="excluirCliente(cliente.Id)">Excluir</button>
-
+            <img class="ico" (click)="editarCliente(cliente)" src="assets/images/edit.svg" alt="" data-toggle="Editar"
+              data-placement="top" title="Editar">
+              <img class="ico" (click)="excluirCliente(cliente.Id)" src="assets/images/delete.svg" alt="" data-toggle="Deletar"
+              data-placement="top" title="Deletar">
           </td>
         </tr>
       </ng-container>

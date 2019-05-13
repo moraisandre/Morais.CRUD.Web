@@ -22,11 +22,11 @@ export class ManutencaoClienteComponent implements OnInit {
   constructor(private clienteService: ClienteService) {}
 
   ngOnInit() {
-    this.trocaTipoDocumento(false);
     if (this.cliente === undefined) {
       this.novoCliente = true;
       this.cliente = new ClienteDTO();
     }
+    this.trocaTipoDocumento(false);
   }
 
   salvar() {

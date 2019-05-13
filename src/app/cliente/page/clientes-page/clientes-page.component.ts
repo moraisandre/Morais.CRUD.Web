@@ -33,7 +33,6 @@ export class ClientesPageComponent implements OnInit {
   buscarClientes() {
     this.clienteService.obterClientes().subscribe(clientes => {
       this.clientes = clientes;
-      // console.log(clientes);
     });
   }
 
