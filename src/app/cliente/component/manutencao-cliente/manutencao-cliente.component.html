@@ -5,42 +5,93 @@
   <h2>Alterar Cliente</h2>
 </ng-template>
 
-<div class="row">
-    doc: "{{cliente?.Documento.length}}"
-  <div *ngIf="novoCliente else editarCliente" class="col-md-3 centralizar">
-    <label class="form-label text-left">Documento</label>
-    <input id="documento-input" class="form-control" [appMascaraDocumento]="PF" type="text" name=""
-      value="" [(ngModel)]="cliente.Documento">
-  </div>
-
-  <ng-template #editarCliente>
-    <div class="col-md-3 centralizar">
-      <label class="form-label text-left">{{cliente?.TipoPessoa == '1' ? 'CPF' : 'CNPJ' }}</label>
-      <input id="documento-input" class="form-control" [appMascaraDocumento]="cliente?.TipoPessoa" type="text" name=""
-        value="" [(ngModel)]="cliente.Documento">
+<div class="row" *ngIf="novoCliente else editarCliente">
+  <div class="row">
+    <div class="radios col-md-2">
+      <label for="tipSacador" class="tit-box">Tipo de Pessoa</label>
+      <div id="tipSacador" class="box-radios" [ngClass]="{'box-radios-disable':sacadorProrio}">
+        <input type="radio" id="in1" name="tipo-pessoa" [(ngModel)]="criarCliente.TipoPessoa" [value]="TipoPessoa.PF"
+          (change)="trocaTipoDocumento()">
+        <label for="in1" class="mBox" ng>PF</label>
+        <input type="radio" id="in2" name="tipo-pessoa" [(ngModel)]="criarCliente.TipoPessoa" [value]="TipoPessoa.PJ"
+          (change)="trocaTipoDocumento()">
+        <label for="in2" class="mBox">PJ</label>
+      </div>
     </div>
-  </ng-template>
 
-  <div class="col-md-6 centralizar">
-    <label class="form-label text-left">Nome</label>
-    <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Nome">
-  </div>
+    <div class="col-md-3 centralizar">
+      <label class="form-label text-left">{{ nomeDocumento }}</label>
+      <input id="documento-input" class="form-control"
+        [appMascaraDocumento]="criarCliente.TipoPessoa == undefined ? 'PF' : criarCliente.TipoPessoa" type="text"
+        name="" value="" [(ngModel)]="criarCliente.Documento">
+    </div>
 
-  <div class="col-md-6 centralizar">
-    <label class="form-label text-left">Endereço</label>
-    <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Endereco">
-  </div>
+    <div class="col-md-6 centralizar">
+      <label class="form-label text-left">Nome</label>
+      <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="criarCliente.Nome">
+    </div>
 
-  <div class="col-md-3 centralizar">
-    <label class="form-label text-left">Email</label>
-    <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Email">
+    <div class="col-md-6 centralizar">
+      <label class="form-label text-left">Endereço</label>
+      <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="criarCliente.Endereco">
+    </div>
+
+    <div class="col-md-3 centralizar">
+      <label class="form-label text-left">Email</label>
+      <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="criarCliente.Email">
+    </div>
   </div>
 </div>
 
-<div class="row row-buttons">
-  <div class="form-group col-md-3">
-    <button id="salvar-cliente-button" class="btnBuscar total" (click)="salvar()">SALVAR</button>
+<ng-template #editarCliente>
+  <div class="row">
+    <div class="radios col-md-2">
+      <label for="tipSacador" class="tit-box">Tipo de Pessoa</label>
+      <div id="tipSacador" class="box-radios" [ngClass]="{'box-radios-disable':sacadorProrio}">
+        <input type="radio" id="in1" name="tipo-pessoa" [(ngModel)]="cliente.TipoPessoa" [value]="TipoPessoa.PF"
+          (change)="trocaTipoDocumento()">
+        <label for="in1" class="mBox" ng>PF</label>
+        <input type="radio" id="in2" name="tipo-pessoa" [(ngModel)]="cliente.TipoPessoa" [value]="TipoPessoa.PJ"
+          (change)="trocaTipoDocumento()">
+        <label for="in2" class="mBox">PJ</label>
+      </div>
+    </div>
+
+    <div class="col-md-3 centralizar">
+      <label class="form-label text-left">{{ nomeDocumento }}</label>
+      <input id="documento-input" class="form-control"
+        [appMascaraDocumento]="cliente.TipoPessoa == undefined ? 'PF' : cliente.TipoPessoa" type="text" name="" value=""
+        [(ngModel)]="cliente.Documento">
+    </div>
+
+
+    <div class="col-md-6 centralizar">
+      <label class="form-label text-left">Nome</label>
+      <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Nome">
+    </div>
+
+    <div class="col-md-6 centralizar">
+      <label class="form-label text-left">Endereço</label>
+      <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Endereco">
+    </div>
+
+    <div class="col-md-3 centralizar">
+      <label class="form-label text-left">Email</label>
+      <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Email">
+    </div>
   </div>
+</ng-template>
+
+
+<div class="row row-buttons">
+  <div class="form-group col-md-3" *ngIf="novoCliente else botaoSalvar">
+    <button id="salvar-cliente-button" class="btnBuscar total" (click)="criar()">CRIAR</button>
+  </div>
+  <ng-template #botaoSalvar>
+    <div class="form-group col-md-3">
+      <button id="salvar-cliente-button" class="btnBuscar total" (click)="salvar()">SALVAR</button>
+    </div>
+  </ng-template>
   <div class="col-md-2">
     <button id="voltar-button" class="btn-voltar marginTopBtn" (click)="voltarLista()">VOLTAR</button>
   </div>

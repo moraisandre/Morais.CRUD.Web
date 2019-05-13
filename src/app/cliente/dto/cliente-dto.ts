@@ -7,4 +7,8 @@ export class ClienteDTO {
   Nome: string;
   Endereco: string;
   Email: string;
+
+  constructor() {
+    this.TipoPessoa = TipoPessoa.PF;
+  }
 }

@@ -1,5 +1,6 @@
 import { Directive, Input, ElementRef, HostListener } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { TipoPessoa } from '../cliente/enum/tipo-pessoa-enum';
 
 @Directive({
   selector: '[appMascaraDocumento]',
@@ -16,7 +17,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 export class MascaraDocumentoDirective implements ControlValueAccessor {
   onTouched: any;
   onChange: any;
-  kzMask: string;
+  mascara: string;
   // tslint:disable-next-line:no-input-rename
   @Input('appMascaraDocumento') appMascaraDocumento: string;
 
@@ -45,7 +46,7 @@ export class MascaraDocumentoDirective implements ControlValueAccessor {
 
     switch (this.appMascaraDocumento) {
       case 'PF':
-        this.kzMask = '999.999.999-99';
+        this.mascara = '999.999.999-99';
         switch ($event.target.selectionEnd) {
           case 3:
           case 7:
@@ -60,7 +61,7 @@ export class MascaraDocumentoDirective implements ControlValueAccessor {
         }
         break;
       case 'PJ':
-        this.kzMask = '99.999.999/9999-99';
+        this.mascara = '99.999.999/9999-99';
         switch ($event.target.selectionEnd) {
           case 2:
           case 6:
@@ -73,10 +74,12 @@ export class MascaraDocumentoDirective implements ControlValueAccessor {
         }
         break;
       default:
+        // this.mascara = '999.999.999-99';
+        this.ajustarDocumentoPorQtdCaracteres(valor);
         break;
     }
 
-    const pad = this.kzMask.replace(/\D/g, '').replace(/9/g, '_');
+    const pad = this.mascara.replace(/\D/g, '').replace(/9/g, '_');
     if (valor.length <= pad.length) {
       this.onChange(valor);
     }
@@ -87,7 +90,7 @@ export class MascaraDocumentoDirective implements ControlValueAccessor {
   onBlur($event: any) {
     if (
       $event.target.value &&
-      $event.target.value.length === this.kzMask.length
+      $event.target.value.length === this.mascara.length
     ) {
       return;
     }
@@ -98,23 +101,23 @@ export class MascaraDocumentoDirective implements ControlValueAccessor {
   aplicarMascaraDocumento(valor: string): string {
     switch (this.appMascaraDocumento) {
       case 'PF':
-        this.kzMask = '999.999.999-99';
+        this.mascara = '999.999.999-99';
         break;
       case 'PJ':
-        this.kzMask = '99.999.999/9999-99';
+        this.mascara = '99.999.999/9999-99';
         break;
       default:
         this.ajustarDocumentoPorQtdCaracteres(valor);
         break;
     }
     valor = valor.replace(/\D/g, '');
-    const pad = this.kzMask.replace(/\D/g, '').replace(/9/g, '_');
+    const pad = this.mascara.replace(/\D/g, '').replace(/9/g, '_');
     const valorMask = valor + pad.substring(0, pad.length - valor.length);
     let valorMaskPos = 0;
     valor = '';
-    for (let i = 0; i < this.kzMask.length; i++) {
-      if (isNaN(parseInt(this.kzMask.charAt(i), 10))) {
-        valor += this.kzMask.charAt(i);
+    for (let i = 0; i < this.mascara.length; i++) {
+      if (isNaN(parseInt(this.mascara.charAt(i), 10))) {
+        valor += this.mascara.charAt(i);
       } else {
         valor += valorMask[valorMaskPos++];
       }
@@ -128,10 +131,10 @@ export class MascaraDocumentoDirective implements ControlValueAccessor {
   ajustarDocumentoPorQtdCaracteres(valor: string) {
     switch (valor.length) {
       case 11:
-        this.kzMask = '999.999.999-99';
+        this.mascara = '999.999.999-99';
         break;
       case 14:
-        this.kzMask = '99.999.999/9999-99';
+        this.mascara = '99.999.999/9999-99';
         break;
       default:
         break;
