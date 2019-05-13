@@ -10,6 +10,7 @@ import { ClienteService } from '../../service/cliente.service';
 export class ListaClientesComponent implements OnInit {
   @Input() clientes: ClienteDTO[];
   @Output() editar = new EventEmitter<ClienteDTO>();
+  @Output() recarregar = new EventEmitter();
 
   constructor(private clienteService: ClienteService) {}
 
@@ -20,6 +21,6 @@ export class ListaClientesComponent implements OnInit {
   }
 
   excluirCliente(id: string) {
-    this.clienteService.deletarCliente(id).subscribe(resp => console.log(resp));
+    this.clienteService.deletarCliente(id).subscribe(() => this.recarregar.emit());
   }
 }

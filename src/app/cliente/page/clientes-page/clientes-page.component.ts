@@ -18,6 +18,9 @@ export class ClientesPageComponent implements OnInit {
   modo: ModoTela;
   ModoTela = ModoTela;
 
+  public loading = false;
+
+
   constructor(private clienteService: ClienteService) {}
 
   ngOnInit() {
@@ -31,8 +34,10 @@ export class ClientesPageComponent implements OnInit {
   }
 
   buscarClientes() {
+    this.loading = true;
     this.clienteService.obterClientes().subscribe(clientes => {
       this.clientes = clientes;
+      this.loading = false;
     });
   }
 

@@ -1,3 +1,5 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Morais CRUD Web</h1>
@@ -17,7 +19,7 @@
 </div>
 
 <ng-container *ngIf="modo === ModoTela.Listar">
-  <app-lista-clientes [clientes]="clientes" (editar)="habilitarEdicaoCliente($event)"></app-lista-clientes>
+  <app-lista-clientes [clientes]="clientes" (editar)="habilitarEdicaoCliente($event)" (recarregar)="mostrarLista()"></app-lista-clientes>
 </ng-container>
 <ng-container *ngIf="modo === ModoTela.Manutencao">
   <app-manutencao-cliente [cliente]="cliente" (voltar)="mostrarLista()"></app-manutencao-cliente>

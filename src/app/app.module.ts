@@ -14,7 +14,7 @@ import { UrlInterceptor } from './interceptors/UrlInterceptor';
 import { DocumentoPipe } from './pipes/documento.pipe';
 import { ManutencaoClienteComponent } from './cliente/component/manutencao-cliente/manutencao-cliente.component';
 import { MascaraDocumentoDirective } from './directives/mascara-documento.directive';
-
+import { NgxLoadingModule } from 'ngx-loading';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +24,8 @@ import { MascaraDocumentoDirective } from './directives/mascara-documento.direct
     ManutencaoClienteComponent,
     MascaraDocumentoDirective
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, NgxLoadingModule.forRoot({})
+  ],
   providers: [
     HttpClient,
     ClienteService,
