@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ClienteDTO } from '../../dto/cliente-dto';
+import { ClienteService } from '../../service/cliente.service';
 
 @Component({
   selector: 'app-manutencao-cliente',
@@ -14,7 +15,7 @@ export class ManutencaoClienteComponent implements OnInit {
 
   // novoCliente = false;
 
-  constructor() { }
+  constructor(private clienteService: ClienteService) {}
 
   ngOnInit() {
     if (this.cliente === undefined) {
@@ -24,11 +25,10 @@ export class ManutencaoClienteComponent implements OnInit {
   }
 
   salvar() {
-
+    this.clienteService.alterarCliente(this.cliente.Id, this.cliente);
   }
 
   voltarLista() {
     this.voltar.emit();
   }
-
 }
