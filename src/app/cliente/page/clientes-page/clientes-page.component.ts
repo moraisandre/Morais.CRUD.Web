@@ -22,15 +22,19 @@ export class ClientesPageComponent implements OnInit {
 
   ngOnInit() {
     this.modo = ModoTela.Listar;
-    this.clienteService.obterClientes().subscribe(clientes => {
-      this.clientes = clientes;
-      console.log(clientes);
-    });
+    this.buscarClientes();
   }
 
   habilitarEdicaoCliente(cliente: ClienteDTO) {
     this.cliente = cliente;
     this.modo = ModoTela.Manutencao;
+  }
+
+  buscarClientes() {
+    this.clienteService.obterClientes().subscribe(clientes => {
+      this.clientes = clientes;
+      // console.log(clientes);
+    });
   }
 
   mostrarLista() {

@@ -8,16 +8,17 @@ import { ClienteDTO } from '../../dto/cliente-dto';
 })
 export class ManutencaoClienteComponent implements OnInit {
   @Input() cliente: ClienteDTO;
+  novoCliente = new ClienteDTO();
 
   @Output() voltar = new EventEmitter();
 
-  novoCliente = false;
+  // novoCliente = false;
 
   constructor() { }
 
   ngOnInit() {
     if (this.cliente === undefined) {
-      this.novoCliente = true;
+      // this.novoCliente = true;
       this.cliente = new ClienteDTO();
     }
   }

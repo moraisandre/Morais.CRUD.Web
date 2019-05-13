@@ -9,7 +9,7 @@
     doc: "{{cliente?.Documento.length}}"
   <div *ngIf="novoCliente else editarCliente" class="col-md-3 centralizar">
     <label class="form-label text-left">Documento</label>
-    <input id="documento-input" class="form-control" [appMascaraDocumento]="cliente?.Documento" type="text" name=""
+    <input id="documento-input" class="form-control" [appMascaraDocumento]="PF" type="text" name=""
       value="" [(ngModel)]="cliente.Documento">
   </div>
 
