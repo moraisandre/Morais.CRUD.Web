@@ -24,10 +24,6 @@ export class UrlInterceptor implements HttpInterceptor {
       url: `${environment.hostApi}/${req.url}`,
       setHeaders: { 'Access-Control-Allow-Origin': '*' }
     });
-    console.log(novaUrlReq);
-    // novaUrlReq.headers.append('Accept', 'application/json');
-    // novaUrlReq.headers.append('X-Requested-With', 'XMLHttpRequest');
-    console.log(novaUrlReq);
     return next.handle(novaUrlReq);
   }
 }

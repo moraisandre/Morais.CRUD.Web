@@ -25,7 +25,11 @@ export class ManutencaoClienteComponent implements OnInit {
   }
 
   salvar() {
-    this.clienteService.alterarCliente(this.cliente.Id, this.cliente);
+    this.clienteService
+      .alterarCliente(this.cliente.Id, this.cliente)
+      .subscribe(() => {
+        this.voltarLista();
+      });
   }
 
   voltarLista() {
