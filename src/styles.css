@@ -1,6 +1,10 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 
+h1, h2, h3, h4 {
+  font-family: 'Signika', sans-serif;
+}
+
 h1 {
   font-weight: 600;
   color: #34808c;
@@ -8,8 +12,8 @@ h1 {
   font-size: 36px;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Signika', sans-serif;
+h2 {
+  font-weight: 700;
 }
 
 h3 {
@@ -69,7 +73,6 @@ h3 {
   padding: 0 15px 0 15px;
 }
 
-
 .botao-padrao {
   border-radius: 2px;
   background-color: #34808c;
@@ -81,6 +84,10 @@ h3 {
   border: #34808c;
   font-weight: 700;
   border-radius: 5px;
+}
+
+.botao-voltar {
+  background-color: #93bec5;
 }
 
 .ico {
