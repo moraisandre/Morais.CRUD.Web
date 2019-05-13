@@ -22,12 +22,9 @@
           <td>{{cliente.Endereco}}</td>
           <td>{{cliente.Email}}</td>
           <td>
-            <a href="">
-              Editar
-            </a>
-            <a href="">
-              Excluir
-            </a>
+            <button id="editar-button" (click)="editarCliente(cliente)">Editar</button>
+            <button id="excluir-button" (click)="excluirCliente(cliente.Id)">Excluir</button>
+
           </td>
         </tr>
       </ng-container>

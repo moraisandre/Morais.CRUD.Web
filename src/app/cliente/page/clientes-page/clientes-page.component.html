@@ -1,10 +1,15 @@
 <h1>Morais CRUD Web</h1>
 
-
-<app-lista-clientes [clientes]="clientes"></app-lista-clientes>
-<div class="row">
-  <!-- <div class="col-md-6 centralizar">
-      <label class="form-label text-left">CPF</label>
-      <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Documento">
-  </div> -->
+<div class="row" *ngIf="modo === ModoTela.Listar">
+  <div class="form-group col-md-3">
+    <button id="criar-cliente-button" class="btnBuscar total" (click)="habilitarEdicaoCliente(undefined)">NOVO
+      CLIENTE</button>
+  </div>
 </div>
+
+<ng-container *ngIf="modo === ModoTela.Listar">
+  <app-lista-clientes [clientes]="clientes" (editar)="habilitarEdicaoCliente($event)"></app-lista-clientes>
+</ng-container>
+<ng-container *ngIf="modo === ModoTela.Manutencao">
+  <app-manutencao-cliente [cliente]="cliente" (voltar)="mostrarLista()"></app-manutencao-cliente>
+</ng-container>

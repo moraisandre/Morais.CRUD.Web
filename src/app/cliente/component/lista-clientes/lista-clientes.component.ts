@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ClienteDTO } from '../../dto/cliente-dto';
+import { ClienteService } from '../../service/cliente.service';
 
 @Component({
   selector: 'app-lista-clientes',
@@ -8,8 +9,17 @@ import { ClienteDTO } from '../../dto/cliente-dto';
 })
 export class ListaClientesComponent implements OnInit {
   @Input() clientes: ClienteDTO[];
+  @Output() editar = new EventEmitter<ClienteDTO>();
 
-  constructor() {}
+  constructor(private clienteService: ClienteService) {}
 
   ngOnInit() {}
+
+  editarCliente(cliente: ClienteDTO) {
+    this.editar.emit(cliente);
+  }
+
+  excluirCliente(id: string) {
+    this.clienteService.deletarCliente(id).subscribe(resp => console.log(resp));
+  }
 }

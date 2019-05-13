@@ -1,6 +1,17 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 
+h1 {
+  font-weight: 600;
+  color: #34808c;
+  text-transform: uppercase;
+  font-size: 36px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Signika', sans-serif;
+}
+
 h3 {
   height: 40px;
   border-radius: 2px;
@@ -18,4 +29,8 @@ h3 {
   line-height: normal;
   border-top: 1px solid #f2f2f2;
   padding: 10px 10px;
+}
+
+.row-buttons {
+  margin-top: 15px;
 }

@@ -12,13 +12,17 @@ import { ClientesPageComponent } from './cliente/page/clientes-page/clientes-pag
 import { ClienteService } from './cliente/service/cliente.service';
 import { UrlInterceptor } from './interceptors/UrlInterceptor';
 import { DocumentoPipe } from './pipes/documento.pipe';
+import { ManutencaoClienteComponent } from './cliente/component/manutencao-cliente/manutencao-cliente.component';
+import { MascaraDocumentoDirective } from './directives/mascara-documento.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientesPageComponent,
     ListaClientesComponent,
-    DocumentoPipe
+    DocumentoPipe,
+    ManutencaoClienteComponent,
+    MascaraDocumentoDirective
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [

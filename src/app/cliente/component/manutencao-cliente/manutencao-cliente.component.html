@@ -1,0 +1,47 @@
+<div *ngIf="novoCliente else edicao">
+  <h2>Criar Cliente</h2>
+</div>
+<ng-template #edicao>
+  <h2>Alterar Cliente</h2>
+</ng-template>
+
+<div class="row">
+    doc: "{{cliente?.Documento.length}}"
+  <div *ngIf="novoCliente else editarCliente" class="col-md-3 centralizar">
+    <label class="form-label text-left">Documento</label>
+    <input id="documento-input" class="form-control" [appMascaraDocumento]="cliente?.Documento" type="text" name=""
+      value="" [(ngModel)]="cliente.Documento">
+  </div>
+
+  <ng-template #editarCliente>
+    <div class="col-md-3 centralizar">
+      <label class="form-label text-left">{{cliente?.TipoPessoa == '1' ? 'CPF' : 'CNPJ' }}</label>
+      <input id="documento-input" class="form-control" [appMascaraDocumento]="cliente?.TipoPessoa" type="text" name=""
+        value="" [(ngModel)]="cliente.Documento">
+    </div>
+  </ng-template>
+
+  <div class="col-md-6 centralizar">
+    <label class="form-label text-left">Nome</label>
+    <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Nome">
+  </div>
+
+  <div class="col-md-6 centralizar">
+    <label class="form-label text-left">Endereço</label>
+    <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Endereco">
+  </div>
+
+  <div class="col-md-3 centralizar">
+    <label class="form-label text-left">Email</label>
+    <input id="documento-input" class="form-control" type="text" name="" value="" [(ngModel)]="cliente.Email">
+  </div>
+</div>
+
+<div class="row row-buttons">
+  <div class="form-group col-md-3">
+    <button id="salvar-cliente-button" class="btnBuscar total" (click)="salvar()">SALVAR</button>
+  </div>
+  <div class="col-md-2">
+    <button id="voltar-button" class="btn-voltar marginTopBtn" (click)="voltarLista()">VOLTAR</button>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ClienteDTO } from '../dto/cliente-dto';
 import { Observable } from 'rxjs/Observable';
-
+import { map } from 'rxjs/operators/map';
 @Injectable()
 export class ClienteService {
   constructor(private http: HttpClient) {}
@@ -23,7 +23,9 @@ export class ClienteService {
     return this.http.put<ClienteDTO>(`cliente/clientes/${id}`, cliente);
   }
 
-  deletarCliente(id: string): Observable<ClienteDTO> {
-    return this.http.delete<ClienteDTO>(`cliente/clientes/${id}`);
+  deletarCliente(id: string): Observable<boolean> {
+    return this.http
+      .delete(`cliente/clientes/${id}`, { observe: 'response' })
+      .pipe(map(response => response.status === 204));
   }
 }
