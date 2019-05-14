@@ -5,6 +5,10 @@
   <h2>Alterar Cliente</h2>
 </ng-template>
 
+<div *ngIf="mensagemDeErro" class="alert alert-danger">
+  {{mensagemDeErro}}
+</div>
+
 <div *ngIf="novoCliente else editarCliente">
   <div class="row">
     <div class="radios col-md-2">

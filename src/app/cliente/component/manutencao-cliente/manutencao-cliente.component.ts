@@ -15,6 +15,7 @@ export class ManutencaoClienteComponent implements OnInit {
   @Output() voltar = new EventEmitter();
 
   TipoPessoa = TipoPessoa;
+  mensagemDeErro: string;
 
   novoCliente = false;
   nomeDocumento = 'CPF';
@@ -34,12 +35,16 @@ export class ManutencaoClienteComponent implements OnInit {
       .alterarCliente(this.cliente.Id, this.cliente)
       .subscribe(() => {
         this.voltarLista();
+      }, resp => {
+        this.mensagemDeErro = resp.error.ExceptionMessage;
       });
   }
 
   criar() {
     this.clienteService.criarCliente(this.criarCliente).subscribe(() => {
       this.voltarLista();
+    }, resp => {
+      this.mensagemDeErro = resp.error.ExceptionMessage;
     });
   }
 
